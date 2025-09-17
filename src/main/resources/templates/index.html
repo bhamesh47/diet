@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Maker - Your Personal Diet Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .diet-card {
+            transition: transform 0.2s ease-in-out;
+            height: 100%;
+        }
+        .diet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        .diet-section {
+            padding: 60px 0;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">🥗 Diet Maker</h1>
+            <p class="lead fs-4">Your Personal Diet Planning Assistant</p>
+            <p class="fs-5">Discover nutritious meal options tailored to your dietary preferences</p>
+        </div>
+    </div>
+
+    <!-- Diet Selection Section -->
+    <div class="diet-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col">
+                    <h2 class="fw-bold">Choose Your Diet Plan</h2>
+                    <p class="text-muted fs-5">Select from our carefully curated diet categories</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center g-4">
+                <!-- Vegetarian Diet Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card diet-card border-0 shadow">
+                        <div class="card-body text-center p-4">
+                            <div class="display-1 mb-3">🥗</div>
+                            <h4 class="card-title fw-bold text-success">Vegetarian Diet</h4>
+                            <p class="card-text text-muted">Plant-based meals rich in nutrients and fiber. Perfect for those seeking healthy, sustainable food choices.</p>
+                            <a href="/diet/vegetarian" class="btn btn-success btn-lg px-4">Select Vegetarian</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Non-Vegetarian Diet Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card diet-card border-0 shadow">
+                        <div class="card-body text-center p-4">
+                            <div class="display-1 mb-3">🥩</div>
+                            <h4 class="card-title fw-bold text-danger">Non-Vegetarian Diet</h4>
+                            <p class="card-text text-muted">Protein-rich meals including lean meats and fish. Ideal for building muscle and maintaining energy.</p>
+                            <a href="/diet/non-vegetarian" class="btn btn-danger btn-lg px-4">Select Non-Vegetarian</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Balanced Diet Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card diet-card border-0 shadow">
+                        <div class="card-body text-center p-4">
+                            <div class="display-1 mb-3">⚖️</div>
+                            <h4 class="card-title fw-bold text-primary">Balanced Diet</h4>
+                            <p class="card-text text-muted">Well-rounded meals with optimal macro-nutrient balance. The perfect choice for overall health.</p>
+                            <a href="/diet/balanced" class="btn btn-primary btn-lg px-4">Select Balanced</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-light py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="display-4 text-primary mb-3">📊</div>
+                    <h5>Detailed Nutrition</h5>
+                    <p class="text-muted">Get comprehensive nutritional information for every meal</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="display-4 text-success mb-3">🍽️</div>
+                    <h5>Organized Meals</h5>
+                    <p class="text-muted">Meals organized by breakfast, lunch, dinner, and snacks</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="display-4 text-warning mb-3">⚡</div>
+                    <h5>Quick & Easy</h5>
+                    <p class="text-muted">Fast, lightweight application with no complex setup required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="text-muted mb-0">© 2024 Diet Maker - Eat Healthy, Live Healthy! 🌱✨</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

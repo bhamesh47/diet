@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Diet Maker - ' + ${dietPlan.name}">Diet Maker - Diet Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .meal-card {
+            transition: transform 0.2s ease-in-out;
+            border-left: 4px solid #007bff;
+        }
+        .meal-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .nutrition-badge {
+            font-size: 0.8rem;
+            margin: 2px;
+        }
+        .meal-section {
+            margin-bottom: 40px;
+        }
+        .section-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .diet-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+        }
+        .meal-scroll {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="/" class="btn btn-outline-primary back-btn">
+        <i class="bi bi-arrow-left"></i> ← Back to Home
+    </a>
+
+    <!-- Diet Header -->
+    <div class="diet-header text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold" th:text="${dietPlan.name}">Diet Plan Name</h1>
+            <p class="lead" th:text="${dietPlan.description}">Diet plan description</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Breakfast Section -->
+        <div class="meal-section">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="fw-bold mb-4">
+                        <span class="section-icon">🌅</span>
+                        Breakfast Options
+                        <span class="badge bg-secondary ms-2" th:text="${#lists.size(breakfastMeals)} + ' meals'">X meals</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="meal-scroll">
+                <div class="row g-3">
+                    <div class="col-md-6" th:each="meal : ${breakfastMeals}">
+                        <div class="card meal-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary" th:text="${meal.name}">Meal Name</h5>
+                                <p class="card-text text-muted" th:text="${meal.description}">Meal description</p>
+                                <div class="nutrition-info">
+                                    <span class="badge bg-warning nutrition-badge" th:text="'🔥 ' + ${meal.calories} + ' cal'">Calories</span>
+                                    <span class="badge bg-success nutrition-badge" th:text="'🥩 ' + ${meal.protein} + 'g protein'">Protein</span>
+                                    <span class="badge bg-info nutrition-badge" th:text="'🍞 ' + ${meal.carbs} + 'g carbs'">Carbs</span>
+                                    <span class="badge bg-danger nutrition-badge" th:text="'🥑 ' + ${meal.fats} + 'g fats'">Fats</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lunch Section -->
+        <div class="meal-section">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="fw-bold mb-4">
+                        <span class="section-icon">🌞</span>
+                        Lunch Options
+                        <span class="badge bg-secondary ms-2" th:text="${#lists.size(lunchMeals)} + ' meals'">X meals</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="meal-scroll">
+                <div class="row g-3">
+                    <div class="col-md-6" th:each="meal : ${lunchMeals}">
+                        <div class="card meal-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary" th:text="${meal.name}">Meal Name</h5>
+                                <p class="card-text text-muted" th:text="${meal.description}">Meal description</p>
+                                <div class="nutrition-info">
+                                    <span class="badge bg-warning nutrition-badge" th:text="'🔥 ' + ${meal.calories} + ' cal'">Calories</span>
+                                    <span class="badge bg-success nutrition-badge" th:text="'🥩 ' + ${meal.protein} + 'g protein'">Protein</span>
+                                    <span class="badge bg-info nutrition-badge" th:text="'🍞 ' + ${meal.carbs} + 'g carbs'">Carbs</span>
+                                    <span class="badge bg-danger nutrition-badge" th:text="'🥑 ' + ${meal.fats} + 'g fats'">Fats</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dinner Section -->
+        <div class="meal-section">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="fw-bold mb-4">
+                        <span class="section-icon">🌙</span>
+                        Dinner Options
+                        <span class="badge bg-secondary ms-2" th:text="${#lists.size(dinnerMeals)} + ' meals'">X meals</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="meal-scroll">
+                <div class="row g-3">
+                    <div class="col-md-6" th:each="meal : ${dinnerMeals}">
+                        <div class="card meal-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary" th:text="${meal.name}">Meal Name</h5>
+                                <p class="card-text text-muted" th:text="${meal.description}">Meal description</p>
+                                <div class="nutrition-info">
+                                    <span class="badge bg-warning nutrition-badge" th:text="'🔥 ' + ${meal.calories} + ' cal'">Calories</span>
+                                    <span class="badge bg-success nutrition-badge" th:text="'🥩 ' + ${meal.protein} + 'g protein'">Protein</span>
+                                    <span class="badge bg-info nutrition-badge" th:text="'🍞 ' + ${meal.carbs} + 'g carbs'">Carbs</span>
+                                    <span class="badge bg-danger nutrition-badge" th:text="'🥑 ' + ${meal.fats} + 'g fats'">Fats</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Snacks Section -->
+        <div class="meal-section">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="fw-bold mb-4">
+                        <span class="section-icon">🍎</span>
+                        Snack Options
+                        <span class="badge bg-secondary ms-2" th:text="${#lists.size(snackMeals)} + ' meals'">X meals</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="meal-scroll">
+                <div class="row g-3">
+                    <div class="col-md-6" th:each="meal : ${snackMeals}">
+                        <div class="card meal-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary" th:text="${meal.name}">Meal Name</h5>
+                                <p class="card-text text-muted" th:text="${meal.description}">Meal description</p>
+                                <div class="nutrition-info">
+                                    <span class="badge bg-warning nutrition-badge" th:text="'🔥 ' + ${meal.calories} + ' cal'">Calories</span>
+                                    <span class="badge bg-success nutrition-badge" th:text="'🥩 ' + ${meal.protein} + 'g protein'">Protein</span>
+                                    <span class="badge bg-info nutrition-badge" th:text="'🍞 ' + ${meal.carbs} + 'g carbs'">Carbs</span>
+                                    <span class="badge bg-danger nutrition-badge" th:text="'🥑 ' + ${meal.fats} + 'g fats'">Fats</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="text-center mt-5">
+            <a href="/" class="btn btn-outline-primary btn-lg me-3">← Back to Diet Selection</a>
+            <div class="btn-group" role="group">
+                <a href="/diet/vegetarian" class="btn btn-success" 
+                   th:classappend="${dietType == 'vegetarian'} ? 'active' : ''">Vegetarian</a>
+                <a href="/diet/non-vegetarian" class="btn btn-danger" 
+                   th:classappend="${dietType == 'non-vegetarian'} ? 'active' : ''">Non-Vegetarian</a>
+                <a href="/diet/balanced" class="btn btn-primary" 
+                   th:classappend="${dietType == 'balanced'} ? 'active' : ''">Balanced</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-4 mt-5">
+        <div class="container">
+            <p class="text-muted mb-0">© 2024 Diet Maker - Eat Healthy, Live Healthy! 🌱✨</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
